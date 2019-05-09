@@ -1,11 +1,11 @@
 package com.google.androidstudio.motionlayoutexample
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.widget.CompoundButton
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.androidstudio.motionlayoutexample.fragmentsdemo.FragmentExample2Activity
 import com.google.androidstudio.motionlayoutexample.fragmentsdemo.FragmentExampleActivity
 import com.google.androidstudio.motionlayoutexample.viewpagerdemo.ViewPagerActivity
@@ -41,10 +41,11 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
             DemosAdapter.Demo("Complex Motion Example (2/4)", "Advanced CoordinatorLayout-like behavior (adding a FAB). Implemented with MotionLayout only, using a moving guideline. Note the view isn't resized.", R.layout.motion_18_coordination),
             DemosAdapter.Demo("Complex Motion Example (3/4)", "Advanced CoordinatorLayout-like behavior (adding a FAB). Implemented with MotionLayout only, using direct resizing of the view.", R.layout.motion_19_coordination),
             DemosAdapter.Demo("Complex Motion Example (4/4)", "Advanced Synchronized reval motion + helper (bounce). Implemented with MotionLayout only.", R.layout.motion_20_reveal),
-            DemosAdapter.Demo("Fragment Transition Example (1/3)", "Example showing transitioning fragments within MotionLayout", FragmentExampleActivity::class.java),
-            DemosAdapter.Demo("Fragment Transition Example (2/3)", "Example showing transitioning fragments within MotionLayout", FragmentExample2Activity::class.java),
-            DemosAdapter.Demo("Fragment Transition Example (3/3)", "Example showing transitioning fragments within MotionLayout", FragmentExample2Activity::class.java),
-            DemosAdapter.Demo("YouTube like motion Example", "Example showing a transition like YouTube", YouTubeDemoActivity::class.java)
+            DemosAdapter.Demo("Fragment Transition Example (1/2)", "Example showing transitioning fragments within MotionLayout", FragmentExampleActivity::class.java),
+            DemosAdapter.Demo("Fragment Transition Example (2/2)", "Example showing transitioning fragments within MotionLayout", FragmentExample2Activity::class.java),
+            DemosAdapter.Demo("YouTube like motion Example", "Example showing a transition like YouTube", YouTubeDemoActivity::class.java),
+            DemosAdapter.Demo("Example using KeyTrigger", "Example that calls a method using KeyTrigger", R.layout.motion_25_keytrigger),
+            DemosAdapter.Demo("Example using Multi State", "Example that transitions between multiple states", R.layout.motion_26_multistate)
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +53,6 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
         setContentView(R.layout.activity_main)
         viewManager = LinearLayoutManager(this)
         viewAdapter = DemosAdapter(dataset)
-
         recyclerView = findViewById<RecyclerView>(R.id.recyclerview).apply {
             setHasFixedSize(true)
             layoutManager = viewManager

@@ -17,10 +17,10 @@
 package com.google.androidstudio.motionlayoutexample.youtubedemo
 
 import android.os.Bundle
-import android.support.constraint.motion.MotionLayout
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.androidstudio.motionlayoutexample.R
 
 class YouTubeDemoActivity : AppCompatActivity() {
@@ -36,7 +36,11 @@ class YouTubeDemoActivity : AppCompatActivity() {
             isNestedScrollingEnabled = false
             layoutManager = LinearLayoutManager(this@YouTubeDemoActivity)
         }
-        val doShowPaths = intent.getBooleanExtra("showPaths", false)
-        motionLayout.setShowPaths(doShowPaths)
+        val debugMode = if (intent.getBooleanExtra("showPaths", false)) {
+            MotionLayout.DEBUG_SHOW_PATH
+        } else {
+            MotionLayout.DEBUG_SHOW_NONE
+        }
+        motionLayout.setDebugMode(debugMode)
     }
 }
